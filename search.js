@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 let bDate = 1;
 let month = 5;
 var day = 9;
@@ -29,7 +28,6 @@ fetch('https://byabbe.se/on-this-day/'+month+'/'+day+'/births.json', {
 //   .then(function (data) {
 //     console.log(data);
 //   });
-=======
 const button = document.getElementById('btn');
 
 
@@ -52,4 +50,3 @@ function getAztro() {
     }
 
 button.addEventListener('click', getAztro)
->>>>>>> 78050279c4e422cd6c9e7d7028febe34ab189e07
