@@ -1,29 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Radio Radio</title>
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign of the Times</title>
+    <link rel="stylesheet" src="./style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
 
-    <form>
-        <div>
-        <h2>Enter A Location:</h2>
-        <input></input>
-        <h2>Search A GENRE:</h2>
-        <input></input>
-        <br>
-        <button>Search</button>
+  <!--Since class names are going to be used for tailwind. I'll label things very specifically with my ID's so you guys know what that element is. 
+    Query Selector in JS will be pointless I think with tailwind, we'll have to use getElementByID -->
+
+  <body>
+
+    <header id="WebsiteHeading" class="" >
+      <div id="" class="flex flex-col justify-center items-center" >
+        <h1 id="heading" class="mb-4 text-3xl font-extrabold tracking-tight leading-none text-8xl" > <span class="">Sign of the Times.</span></h1>
+        <p id="subHeading" class="my-6 text-lg font-normal">Enter your birthday to get your horoscope and then find out who you share a birthday with!</p>
+      </div>
+    </header>
+
+    
+    <form id="calenderForm" class="flex flex-col justify-center items-center mt-10 drop-shadow-xl" >
+    <h2>Enter your Birthday here:</h2>
+    <div class="relative" id="">
+        <div class="">
         </div>
-    </form> 
-    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" id="btn">
-        Button
-      </button>
- 
+        <input id="calenderSelector" datepicker datepicker-autohide type="text" class="bg-gray-200 border-b-8 border-lime-500 text--900 sm:text-sm rounded-lg focus:border-blue-500 block w-full pl-10 p-2.5" placeholder="Select date">
+      </div>
 
-</body>
-<script src="search.js"></script>
+
+        <div id="submitBtn" class="" >
+            <button id="btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2" >
+              Submit
+            </button>
+          </div>
+    </form>
+
+    <section id="horoscopeCard" class="bg-fuchsia-400 w-96 h-96 px-4 rounded ml-10 drop-shadow-xl" >
+      <div >
+        <h2 id="horoCardHeading" class="flex flex-col justify-center items-center p-6 text-lg font-bold" >Your Horoscope:</h2>
+      </div>
+
+      <div class="" id="">
+        <h3 id="horoscopeMonth" class="" ></h3>
+
+        <div id="horoscopeInfo" class="" ></div>
+      </div>
+    </section>
+
+
+    <section id="birthdayCard" class="bg-amber-300 w-96 h-96 px-4 rounded ml-10 mb-10 drop-shadow-2xl" >
+      <div>
+        <h2 id="bdayCardHeading" class="flex flex-col justify-center items-center p-6 text-lg font-bold m-10" >You share a birthday with:</h2>
+      </div>
+
+      <div class="" id="">
+        <a id="bdayLinktoWiki" class=""  href="">
+          <p id="fetchbdayinfo" class="" ></p>
+        </a>
+      </div>
+    </section>
+
+    <footer id="footer" class="bg-emerald-300 font-semibold text-gray-500 flex flex-col justify-center items-center">Made by: Nathan, Conor, Wes & Wally(Matt)</footer>
+  </body>
+  <script src="https://unpkg.com/flowbite@1.5.3/dist/datepicker.js"></script>
+  <script src="search.js"></script>
 </html>
+
