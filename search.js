@@ -3,6 +3,11 @@ var zodiacSign = "";
 
 // set variable for clicking button
 const button = document.getElementById('btn');
+const horoMonth = $('#horoscopeMonth');
+const horoInfo = $('#horoscopeInfo');
+const bDayLink = $('#bdayLinktoWiki');
+const bDayInfo = $('#fetchbdayinfo');
+
 
 //add event listeners to trigger functions when submit button is clicked
 //first need to prevent default page reload behavior because the console 
@@ -157,7 +162,26 @@ function getAztro() {
 
     fetch('https://sameer-kumar-aztro-v1.p.rapidapi.com/?sign=' + zodiacSign + '&day=today', aztroCall)
         .then(response => response.json())
-        .then(response => console.log(response))
-        .catch(err => console.error(err));
+        .then(data => {
+          console.log(data) 
+          popData(data, zodiacSign)})
+}
 
+function popData(horoData) {
+  removeContent();
+  const horoDesc = horoData.description;
+  const horoColor = horoData.color;
+  const horoComp = horoData.compatibility;
+  const horoMood = horoData.mood;
+  const horoDate = horoData.current_date;
+  const horoNum = horoData.lucky_number;
+
+  horoMonth.append(zodiacSign);
+  horoInfo.append('Color: ' + horoColor + '<br> Mood: ' + horoMood + '<br> Lucky Number: ' + horoNum +
+  '<br> Compatibility: ' + horoComp + '<br> Horoscope: ' + horoDesc)
+}
+
+function removeContent() {
+  horoMonth.empty();
+  horoInfo.empty();
 }
