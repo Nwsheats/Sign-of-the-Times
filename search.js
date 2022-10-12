@@ -31,24 +31,32 @@ function getByabbe() {
     var day = bDateMoment.date();
     var year = bDateMoment.year();
     var byabbeURI = "https://byabbe.se/on-this-day/";
-    //console.log(bDateMoment);
-    //console.log(month);
-    //console.log(day);
-    //console.log(year);
-
 
     fetch(byabbeURI + month + '/' + day + '/births.json')
         .then(response => response.json())
-        .then(response => console.log(response))
-        .catch(err => console.error(err));
+        .then(wikiData => { //make a function to store the wiki data
+            console.log(wikiData) //show what's in the JSON object 
+            popWiki(wikiData) //call next function and pass wikiData into it
+        })
+}
+function popWiki(wikiData) { //make function to render the wiki data elements
+    removeContent();
+    let apString = ""; //apString holds the HTML that we'll replace in the loop
+    var wikiUL = document.getElementById('bdayList'); //into this element we'll insert new <a> and <p> tags
+    for (let i = 0; i < 5; i++) { //loop through first five people, maybe later make random?
+        var birthsYear = wikiData.births[i].year;
+        var birthsDesc = wikiData.births[i].description;
+        var birthsLink = wikiData.births[i].wikipedia[0].wikipedia;
+
+        apString += '<a class="list-disc" href="' + birthsLink + '">\
+                            <p class="list-disc">'+ birthsYear + ' - ' + birthsDesc + '</p>\
+                            </a>'
+    }
+    wikiUL.innerHTML = apString;
 }
 
-//function to calculate Zodiac sign from input month and day
+//next function to calculate Zodiac sign from input month and day
 //attempting method described here: https://medium.com/@Saf_Bes/get-the-zodiac-sign-for-a-date-in-javascript-797305d75869
-
-
-
-
 
 function dateToZodiac(day, month) {
     let bDateText = $("#calendarSelector").val();
@@ -163,25 +171,26 @@ function getAztro() {
     fetch('https://sameer-kumar-aztro-v1.p.rapidapi.com/?sign=' + zodiacSign + '&day=today', aztroCall)
         .then(response => response.json())
         .then(data => {
-          console.log(data) 
-          popData(data, zodiacSign)})
+            console.log(data)
+            popData(data, zodiacSign)
+        })
 }
 
 function popData(horoData) {
-  removeContent();
-  const horoDesc = horoData.description;
-  const horoColor = horoData.color;
-  const horoComp = horoData.compatibility;
-  const horoMood = horoData.mood;
-  const horoDate = horoData.current_date;
-  const horoNum = horoData.lucky_number;
+    removeContent();
+    const horoDesc = horoData.description;
+    const horoColor = horoData.color;
+    const horoComp = horoData.compatibility;
+    const horoMood = horoData.mood;
+    const horoDate = horoData.current_date;
+    const horoNum = horoData.lucky_number;
 
-  horoMonth.append(zodiacSign);
-  horoInfo.append('Color: ' + horoColor + '<br> Mood: ' + horoMood + '<br> Lucky Number: ' + horoNum +
-  '<br> Compatibility: ' + horoComp + '<br> Horoscope: ' + horoDesc)
+    horoMonth.append(zodiacSign);
+    horoInfo.append('Color: ' + horoColor + '<br> Mood: ' + horoMood + '<br> Lucky Number: ' + horoNum +
+        '<br> Compatibility: ' + horoComp + '<br> Horoscope: ' + horoDesc)
 }
 
 function removeContent() {
-  horoMonth.empty();
-  horoInfo.empty();
+    horoMonth.empty();
+    horoInfo.empty();
 }
