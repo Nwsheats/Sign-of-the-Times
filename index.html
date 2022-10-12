@@ -19,18 +19,18 @@
   <!--Since class names are going to be used for tailwind. I'll label things very specifically with my ID's so you guys know what that element is. 
     Query Selector in JS will be pointless I think with tailwind, we'll have to use getElementByID -->
 
-  <body>
+  <body class="bg-gradient-to-t from-slate-600 to-slate-800 ">
 
     <header id="WebsiteHeading" class="" >
       <div id="" class="flex flex-col justify-center items-center" >
-        <h1 id="heading" class="mb-4 text-3xl font-extrabold tracking-tight leading-none text-8xl" > <span class="">Sign of the Times.</span></h1>
-        <p id="subHeading" class="my-6 text-lg font-normal">Enter your birthday to get your horoscope and then find out who you share a birthday with!</p>
+        <h1 id="heading" class="text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 drop-shadow-1xl pb-10 mt-10" > <span class="">Sign of the Times.</span></h1>
+        <p id="subHeading" class="my-6 text-lg font-bold text-white drop-shadow-md">Enter your birthday to get your horoscope and then find out who you share a birthday with!</p>
       </div>
     </header>
-
+  
     
     <form id="calenderForm" class="flex flex-col justify-center items-center mt-10 drop-shadow-xl" >
-    <h2>Enter your Birthday here:</h2>
+    <h2 id="" class="my-4 text-lg font-bold text-white drop-shadow-md">Enter your Birthday here:</h2>
     <div class="relative" id="">
         <div class="">
         </div>
@@ -39,15 +39,15 @@
 
 
         <div id="submitBtn" class="" >
-            <button id="btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2" >
+            <button id="btn" class="text-white font-bold py-2 px-4 rounded-2xl mt-4 bg-cyan-500 shadow-md shadow-teal-600/80 hover:bg-fuchsia-500 hover:shadow-md hover:shadow-purple-600/80" >
               Submit
             </button>
           </div>
     </form>
 
-    <section id="horoscopeCard" class="bg-fuchsia-400 w-96 h-96 px-4 rounded ml-10 drop-shadow-xl" >
+    <section id="horoscopeCard" class="bg-fuchsia-400 w-96 h-96 px-4 rounded-3xl ml-10 drop-shadow-xl" >
       <div >
-        <h2 id="horoCardHeading" class="flex flex-col justify-center items-center p-6 text-lg font-bold" >Your Horoscope:</h2>
+        <h2 id="horoCardHeading" class="flex flex-col justify-center items-center p-6 text-lg font-bold">Your Horoscope:</h2>
       </div>
 
       <div class="" id="">
@@ -58,7 +58,7 @@
     </section>
 
 
-    <section id="birthdayCard" class="bg-amber-300 w-96 h-96 px-4 rounded ml-10 mb-10 drop-shadow-2xl" >
+    <section id="birthdayCard" class="bg-amber-300 w-96 h-96 px-4 rounded-3xl ml-10 mb-10 drop-shadow-2xl" >
       <div>
         <h2 id="bdayCardHeading" class="flex flex-col justify-center items-center p-6 text-lg font-bold m-10" >You share a birthday with:</h2>
       </div>
