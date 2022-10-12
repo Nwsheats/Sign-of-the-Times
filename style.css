@@ -3,3 +3,9 @@
     background: rgba(122, 97, 196, 0.728);
   }
 
+  footer {
+    position: absolute;
+    bottom: 0;
+    width: 99%;
+    height: 2.5rem;
+  }
