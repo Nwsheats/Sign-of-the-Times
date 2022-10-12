@@ -1,63 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign of the Times</title>
-    <link rel="stylesheet" href="./style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/besrourms/zodiacsigns@latest/index.min.js"></script>
-  </head>
 
-  <!--Since class names are going to be used for tailwind. I'll label things very specifically with my ID's so you guys know what that element is. 
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign of the Times</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+</head>
+
+<!--Since class names are going to be used for tailwind. I'll label things very specifically with my ID's so you guys know what that element is. 
     Query Selector in JS will be pointless I think with tailwind, we'll have to use getElementByID -->
 
-  <body class="h-screen bg-gradient-to-t from-slate-600 to-slate-800">
-   
-    <header id="WebsiteHeading" class="" >
-      <div id="" class="flex flex-col justify-center items-center" >
-        <h1 id="heading" class="text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 drop-shadow-1xl pb-10 mt-10 " > <span class="">Sign of the Times.</span></h1>
-        <p id="subHeading" class="my-6 text-lg font-bold text-white drop-shadow-md">Enter your birthday to get your horoscope and then find out who you share a birthday with!</p>
-      </div>
-    </header>
-  
-    
-    <form id="calenderForm" class="flex flex-col justify-center items-center mt-10 drop-shadow-xl" >
+<body class="h-screen bg-gradient-to-t from-slate-600 to-slate-800">
+
+  <header id="WebsiteHeading" class="">
+    <div id="" class="flex flex-col justify-center items-center">
+      <h1 id="heading"
+        class="text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 drop-shadow-1xl pb-10 mt-10 ">
+        <span class="">Sign of the Times.</span>
+      </h1>
+      <p id="subHeading" class="my-6 text-lg font-bold text-white drop-shadow-md">Enter your birthday to get your
+        horoscope and then find out who you share a birthday with!</p>
+    </div>
+  </header>
+
+
+  <form id="calenderForm" class="flex flex-col justify-center items-center mt-10 drop-shadow-xl">
     <h2 id="" class="my-4 text-lg font-bold text-white drop-shadow-md">Enter your Birthday here:</h2>
     <div class="relative" id="">
-        <div class="">
-        </div>
-        <input id="calendarSelector" datepicker datepicker-autohide type="text" class="bg-gray-200 border-b-8 border-lime-500 text--900 sm:text-sm rounded-lg focus:border-blue-500 block w-full pl-10 p-2.5" placeholder="Select date">    
+      <div class="">
       </div>
+      <input id="calendarSelector" datepicker datepicker-autohide type="text"
+        class="bg-gray-200 border-b-8 border-lime-500 text--900 sm:text-sm rounded-lg focus:border-blue-500 block w-full pl-10 p-2.5"
+        placeholder="Select date">
+    </div>
 
 
-        <div id="submitBtn" class="" >
-            <button id="btn" class="text-white font-bold py-2 px-4 rounded-2xl mt-4 bg-cyan-500 shadow-md shadow-teal-600/80 hover:bg-fuchsia-500 hover:shadow-md hover:shadow-purple-600/80 hover:scale-125" >
-              Submit
-            </button>
-          </div>
-    </form>
+    <div id="submitBtn" class="">
+      <button id="btn"
+        class="text-white font-bold py-2 px-4 rounded-2xl mt-4 bg-cyan-500 shadow-md shadow-teal-600/80 hover:bg-fuchsia-500 hover:shadow-md hover:shadow-purple-600/80 hover:scale-125">
+        Submit
+      </button>
+    </div>
+  </form>
 
-<div class="flex flex-row justify-center items-center">
-    <section id="horoscopeCard" class="bg-fuchsia-400 w-1/3 h-96 rounded-3xl m-10 drop-shadow-xl border-8 border-fuchsia-500 l">
-      <div >
-        <h2 id="horoCardHeading" class="flex flex-col justify-center items-center p-2 font-bold text-2xl text-gray-600">Your Horoscope:</h2>
+  <div class="flex flex-row justify-center items-center">
+    <section id="horoscopeCard"
+      class="bg-fuchsia-400 w-1/3 h-96 rounded-3xl m-10 drop-shadow-xl border-8 border-fuchsia-500 l">
+      <div>
+        <h2 id="horoCardHeading" class="flex flex-col justify-center items-center p-2 font-bold text-2xl text-gray-600">
+          Your Horoscope:</h2>
       </div>
 
       <div class="" id="">
-        <h2 id="horoscopeMonth" class="flex flex-col justify-center items-center text-2xl font-bold text-5xl text-white drop-shadow-lg" ></h3>
-        <div id="horoscopeInfo" class="flex flex-col justify-center items-center "></div>
+        <h2 id="horoscopeMonth"
+          class="flex flex-col justify-center items-center text-2xl font-bold text-5xl text-white drop-shadow-lg">
+          </h3>
+          <div id="horoscopeInfo" class="flex flex-col justify-center items-center "></div>
       </div>
 
-      <div id="saveBtn" class="flex flex-col justify-items items-center fixed bottom-5 w-full" >
-        <button id="btn" class="text-white font-bold py-2 px-4 rounded-2xl mt-4 bg-emerald-500 shadow-md shadow-teal-600/80 hover:bg-stone-500 hover:shadow-md hover:shadow-green-600/80 hover:scale-125" >
+      <div id="saveBtn" class="flex flex-col justify-items items-center fixed bottom-5 w-full">
+        <button id="btn"
+          class="text-white font-bold py-2 px-4 rounded-2xl mt-4 bg-emerald-500 shadow-md shadow-teal-600/80 hover:bg-stone-500 hover:shadow-md hover:shadow-green-600/80 hover:scale-125">
           Save
         </button>
       </div>
@@ -74,25 +83,24 @@
     </section>
 
 
-    <section id="birthdayCard" class="bg-amber-300 w-1/3 h-96 m-10 rounded-3xl drop-shadow-2xl border-8 border-amber-500" >
+    <section id="birthdayCard"
+      class="bg-amber-300 w-1/3 h-96 m-10 rounded-3xl drop-shadow-2xl border-8 border-amber-500">
       <div>
-        <h2 id="bdayCardHeading" class="flex flex-col justify-center items-center font-bold text-2xl text-gray-600" >You share a birthday with:</h2>
+        <h2 id="bdayCardHeading" class="flex flex-col justify-center items-center font-bold text-2xl text-gray-600">You
+          share a birthday with:</h2>
       </div>
 
-      <div class="" id="">
-        <a id="bdayLinktoWiki" class=""  href="">
-          <p id="fetchbdayinfo" class="" ></p>
-        </a>
-      </div>
+      <ul class="" id="bdayList">
+      </ul>
     </section>
-</div>
-<!-- FOOTER MESSING THINGS UP, WILL FIX LATER
+  </div>
+  <!-- FOOTER MESSING THINGS UP, WILL FIX LATER
   <div class="flex flex-col justify-center items-center">
     <footer id="footer" class="bg-emerald-600 font-semibold text-gray-100 flex flex-col justify-center items-center">Made by: Nathan, Conor, Wes & Wally(Matt)</footer>
     </div>
   -->
-  </body>
-  <script src="https://unpkg.com/flowbite@1.5.3/dist/datepicker.js"></script>
-  <script src="search.js"></script>
-</html>
+</body>
+<script src="https://unpkg.com/flowbite@1.5.3/dist/datepicker.js"></script>
+<script src="search.js"></script>
 
+</html>
