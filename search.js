@@ -81,7 +81,7 @@ function popWiki(wikiData) { //make function to render the wiki data elements
         var birthsLink = wikiData.births[e].wikipedia[0].wikipedia;
         //wikiData.births.delete(e)
         apString += '<a class="list-disc" href="' + birthsLink + '">\
-                            <p class="list-disc">'+ birthsYear + ' - ' + birthsDesc + '</p>\
+                            <li class="list-disc">'+ birthsYear + ' - ' + birthsDesc + '</li>\
                             </a>'
     }
     wikiUL.innerHTML = apString;
