@@ -45,11 +45,20 @@ function popWiki(wikiData) { //make function to render the wiki data elements
     var wikiUL = document.getElementById('bdayList');
      //into this element we'll insert new <a> and <p> tags
     for (let i = 0; i < 5; i++) { //loop through first five people, maybe later make random?
+
         var birthsYear = wikiData.births[i].year;
         var birthsDesc = wikiData.births[i].description;
         var birthsLink = wikiData.births[i].wikipedia[0].wikipedia;
 
         apString += '<a class="list-disc" target=_blank href="' + birthsLink + '">\
+
+        var e = Math.floor((Math.random()*wikiData.births.length))
+        var birthsYear = wikiData.births[e].year;
+        var birthsDesc = wikiData.births[e].description;
+        var birthsLink = wikiData.births[e].wikipedia[0].wikipedia;
+        //wikiData.births.delete(e)
+        apString += '<a class="list-disc" href="' + birthsLink + '">\
+
                             <p class="list-disc">'+ birthsYear + ' - ' + birthsDesc + '</p>\
                             </a>'
     }
