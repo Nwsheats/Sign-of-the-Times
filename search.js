@@ -10,17 +10,43 @@ const bDayLink = $('#bdayLinktoWiki');
 const bDayInfo = $('#fetchbdayinfo');
 const savedText = $('#dataHere1')
 
+// when the page loads, storageLocal is either the local storage info or an
+// empty string. A for loop allows all of that data in the Array to be appended
+// to the savedText box upon page load.
+let storageLocal = JSON.parse(localStorage.getItem("sign-store")) || [];
+for (let i = 0; i < storageLocal.length; i++) {
+  savedText.append(storageLocal[i].date + ': ' + storageLocal[i].description + '<br>');
+}
+
+
 //add event listeners to trigger functions when submit button is clicked
 //first need to prevent default page reload behavior because the console 
 //log was clearing immediately, so couldn't debug page behavior
+
+// combined our three EventListeners into one, added jQuery to enable the 
+// save button after it is pressed and change the color back to emerald.
 button.addEventListener('click', function (event) {
     event.preventDefault()
+    getByabbe();
+    dateToZodiac();
+    $('#saveBtn #btn').prop("disabled", false);
+    $('#saveBtn #btn').css("background-color", "rgb(16 185 129)");
+    //
 });
 
-button.addEventListener('click', getByabbe);
 
-button.addEventListener('click', dateToZodiac);
-saveButton.addEventListener('click', addLSText)
+// This is the Save Button event listener, uses a callback function to grab the
+// date and description values set in popDate(), so we can call them outside of
+// that function. Runs the addLSText function with those variables.
+// jQuery to disable the save button when pressed and change the color.
+saveButton.addEventListener('click', function() {
+  const date = horoInfo.data("date");
+  const desc = horoInfo.data("desc");
+  addLSText(date, desc);
+  $('#saveBtn #btn').prop("disabled", true);
+  $('#saveBtn #btn').css("background-color", "rgb(120 113 108)")
+
+}) 
 //onload~ load Local storage
 
 
@@ -41,8 +67,11 @@ function getByabbe() {
             popWiki(wikiData) //call next function and pass wikiData into it
         })
 }
+
+// I would not use removeContent here, as running this function clears the horoData.
+// The removeContent function can be deleted, as the Wiki info is replaced everytime anyways.
 function popWiki(wikiData) { //make function to render the wiki data elements
-    removeContent();
+    // removeContent();
     let apString = ""; //apString holds the HTML that we'll replace in the loop
     var wikiUL = document.getElementById('bdayList'); //into this element we'll insert new <a> and <p> tags
     for (let i = 0; i < 5; i++) { //loop through first five people, maybe later make random?
@@ -51,8 +80,8 @@ function popWiki(wikiData) { //make function to render the wiki data elements
         var birthsDesc = wikiData.births[e].description;
         var birthsLink = wikiData.births[e].wikipedia[0].wikipedia;
         //wikiData.births.delete(e)
-        apString += '<a class="list-disc" target=_blank href="' + birthsLink + '">\
-                            <p class="list-disc">'+ birthsYear + ' - ' + birthsDesc + '</p>\
+        apString += '<a class="list-disc" href="' + birthsLink + '">\
+                            <li class="list-disc">'+ birthsYear + ' - ' + birthsDesc + '</li>\
                             </a>'
     }
     wikiUL.innerHTML = apString;
@@ -161,7 +190,6 @@ function dateToZodiac(day, month) {
 
 //fetch request for Aztro - Horoscope
 function getAztro() {
-    //let horoSign = zodiacSign;
 
     const aztroCall = {
         method: 'POST',
@@ -179,6 +207,9 @@ function getAztro() {
         })
 }
 
+
+// added horoInfo.data to store these variables in the data fields I added to
+// "horoscopeInfo" in the HTML.
 function popData(horoData) {
     removeContent();
     const horoDesc = horoData.description;
@@ -187,7 +218,8 @@ function popData(horoData) {
     const horoMood = horoData.mood;
     const horoDate = horoData.current_date;
     const horoNum = horoData.lucky_number;
-
+    horoInfo.data("date", horoDate);
+    horoInfo.data("desc", horoDesc);
     horoMonth.append(zodiacSign);
     horoInfo.append('Color: ' + horoColor + '<br> Mood: ' + horoMood + '<br> Lucky Number: ' + horoNum +
         '<br> Compatibility: ' + horoComp + '<br> Horoscope: ' + horoDesc)
@@ -197,10 +229,21 @@ function removeContent() {
     horoMonth.empty();
     horoInfo.empty();
 }
-//local storage
-function addLSText(){
-    let lS = $("#calendarSelector").val();
-    localStorage.setItem('date', lS)
-    var dateLS = localStorage.getItem('date')
-    savedText.append(dateLS + '<br>')
+//local storage, I changed this so that it uses the date and description, sets
+// them to an object, pushes the object into the storageLocal array above, then
+// stringifies the array into localStorage, then appends the date + description
+// inside the savedText box.
+
+// Instead of the birthday being saved, I was thinking that the date you requested
+// the horoscope is saved. Your birthday won't change, but your horoscope tomorrow will
+// so now, it appends today's date and today's description, so you can see which
+// description you got on which day.
+function addLSText(date, description){
+    let storageObject = {
+      date: date,
+      description: description
+    }
+    storageLocal.push(storageObject)
+    localStorage.setItem('sign-store', JSON.stringify(storageLocal))
+    savedText.append(date + ': ' + description + '<br>')
 }
