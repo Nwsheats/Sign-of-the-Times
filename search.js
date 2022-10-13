@@ -2,12 +2,13 @@
 var zodiacSign = "";
 
 // set variable for clicking button
+const saveButton = document.getElementById('saveBtn')
 const button = document.getElementById('btn');
 const horoMonth = $('#horoscopeMonth');
 const horoInfo = $('#horoscopeInfo');
 const bDayLink = $('#bdayLinktoWiki');
 const bDayInfo = $('#fetchbdayinfo');
-
+const savedText = $('#dataHere1')
 
 //add event listeners to trigger functions when submit button is clicked
 //first need to prevent default page reload behavior because the console 
@@ -17,9 +18,10 @@ button.addEventListener('click', function (event) {
 });
 
 button.addEventListener('click', getByabbe);
-//button.addEventListener('click', getAztro);
-button.addEventListener('click', dateToZodiac);
 
+button.addEventListener('click', dateToZodiac);
+saveButton.addEventListener('click', addLSText)
+//onload~ load Local storage
 
 
 //fetch request for Byabee - wiki births
@@ -44,7 +46,7 @@ function popWiki(wikiData) { //make function to render the wiki data elements
     let apString = ""; //apString holds the HTML that we'll replace in the loop
     var wikiUL = document.getElementById('bdayList'); //into this element we'll insert new <a> and <p> tags
     for (let i = 0; i < 5; i++) { //loop through first five people, maybe later make random?
-        var e = Math.floor((Math.random()*wikiData.births.length))
+        var e = Math.floor((Math.random() * wikiData.births.length))
         var birthsYear = wikiData.births[e].year;
         var birthsDesc = wikiData.births[e].description;
         var birthsLink = wikiData.births[e].wikipedia[0].wikipedia;
@@ -194,4 +196,11 @@ function popData(horoData) {
 function removeContent() {
     horoMonth.empty();
     horoInfo.empty();
+}
+//local storage
+function addLSText(){
+    let lS = $("#calendarSelector").val();
+    localStorage.setItem('date', lS)
+    var dateLS = localStorage.getItem('date')
+    savedText.append(dateLS + '<br>')
 }
