@@ -49,48 +49,46 @@
     </div>
   </form>
 
-  <div class="flex flex-row justify-center items-center mt-10 ">
+  <div class="flex flex-row justify-center items-center mt-10">
     <section id="horoscopeCard"
-      class="bg-gradient-to-b from-fuchsia-400 to-fuchsia-600 w-1/3 h-96 rounded-3xl m-10 drop-shadow-xl border-b-8 border-t-8 border-fuchsia-500">
+      class="bg-gradient-to-b from-fuchsia-400 to-fuchsia-600 w-1/3 min-h-96 rounded-3xl m-10 drop-shadow-xl border-b-8 border-t-8 border-fuchsia-500">
       <div>
-        <h2 id="horoCardHeading" class="flex flex-col justify-center items-center p-2 mt-3 font-bold text-2xl text-gray-600">
+        <h2 id="horoCardHeading" class="flex flex-col justify-center items-center p-2 mt-3 font-bold text-2xl text-gray-800">
           Your Horoscope:</h2>
       </div>
 
-      <div class="" id="">
+      <div class="min-h-96" id="">
         <h2 id="horoscopeMonth"
           class="flex flex-col justify-center items-center text-2xl font-bold text-5xl text-white drop-shadow-lg">
           </h3>
-          <div id="horoscopeInfo" data-date="" data-desc="" class="flex flex-col justify-center items-center "></div>
+          <div id="horoscopeInfo" class="flex flex-col justify-center items-center text-slate-300 font-medium text-lg mb-20 mr-10 ml-10"></div>
       </div>
 
       <div id="saveBtn" class="flex flex-col justify-items items-center fixed bottom-5 w-full">
         <button id="btn"
-          class="text-white font-bold py-2 px-4 rounded-2xl mt-4 bg-emerald-500 shadow-md shadow-teal-600/80 hover:bg-stone-500 hover:shadow-md hover:shadow-green-600/80 hover:scale-125">
+          class="text-white font-bold py-2 px-4 rounded-2xl bg-emerald-500 shadow-md shadow-teal-600/80 hover:bg-stone-500 hover:shadow-md hover:shadow-green-600/80 hover:scale-125">
           Save
         </button>
       </div>
     </section>
 
 
-    <section id="savedData" class="bg-gradient-to-t from-indigo-400 to-indigo-500 rounded-3xl h-96 m-20 drop-shadow-xl border-r-8 border-l-8 border-indigo-500">
-      <div id="" class="">
-        <h2 id="" class="text-white flex justify-center pt-1 m-5 w-96 font-bold text-2xl">Your saved horoscopes.</h2>
-        <p id="dataHere1" class=""></p>
-        <p id="dataHere2" class=""></p>
-        <p id="dataHere3" class=""></p>
+    <section id="savedData" class="flex flex-col justify-center items-center bg-gradient-to-t from-indigo-400 to-indigo-500 rounded-3xl w-1/3 h-auto min-h-96 m-20 drop-shadow-xl border-r-8 border-l-8 border-indigo-500">
+      <div id="" class="flex flex-col justify-center items-center">
+        <h2 id="" class="flex flex-col justify-center items-center text-gray-800 pt-1 m-5 w-96 font-bold text-2xl">Your saved horoscopes.</h2>
+        <p id="dataHere1" class=" flex flex-col justify-center items-center m-10 break-normal text-lg font-medium text-slate-300"></p>
       </div>
     </section>
 
 
     <section id="birthdayCard"
-      class="bg-gradient-to-b from-amber-300 to-amber-500 w-1/3 h-96 m-10 rounded-3xl drop-shadow-2xl border-b-8 border-t-8 border-amber-400">
+      class="bg-gradient-to-b from-amber-300 to-amber-500 w-1/3 h-aut0 min-h-96 m-10 rounded-3xl drop-shadow-2xl border-b-8 border-t-8 border-amber-400">
       <div>
-        <h2 id="bdayCardHeading" class="flex flex-col justify-center items-center p-2 mt-3 font-bold text-2xl text-gray-600">You
+        <h2 id="bdayCardHeading" class="flex flex-col justify-center items-center p-2 mt-3 font-bold text-gray-800 text-2xl">You
           share a birthday with:</h2>
       </div>
 
-      <ul class="flex flex-col justify-center items-start m-10 font-medium text-2xl text-white drop-shadow-lg" id="bdayList">
+      <ul class="flex flex-col justify-center items-start m-10 font-medium text-2xl text-slate-800 drop-shadow-lg" id="bdayList">
       </ul>
     </section>
   </div>
