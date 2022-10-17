@@ -31,9 +31,9 @@ THEN I can get a custom horoscope for my birthday and see a list of famous peopl
 ```
 
 ## Mock-Up
+![Before Click](https://user-images.githubusercontent.com/111530485/196305012-3a3cabf4-92dd-40cf-b720-9538e098e1a8.png)
 
-
-
+![After Click](https://user-images.githubusercontent.com/111530485/196305020-1ce7fc12-0bf7-4b76-9e6e-16e3aa32967f.png)
 
 ## Deployed URL Link
 
@@ -42,3 +42,11 @@ THEN I can get a custom horoscope for my birthday and see a list of famous peopl
 ## GitHub Repository Link
 
 https://github.com/Nwsheats/Signs-of-the-Times
+
+## Credits
+```
+Nathan Sheats
+Wesley Lere
+Conor Donnelly
+Mathew Waldron
+```
