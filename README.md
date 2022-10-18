@@ -1,4 +1,4 @@
-# Signs of the Times
+# Sign of the Times
 
 ## Description
 
@@ -37,7 +37,7 @@ THEN I can get a custom horoscope for my birthday and see a list of famous peopl
 
 ## Deployed URL Link
 
-
+https://nwsheats.github.io/Sign-of-the-Times/
 
 ## GitHub Repository Link
 
