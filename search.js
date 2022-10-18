@@ -1,7 +1,7 @@
 //Define zodiacSign as a global variable to use later in the getAztro function
 var zodiacSign = "";
 
-// set variable for clicking button
+// set variables for buttons and divs
 const saveButton = document.getElementById('saveBtn')
 const button = document.getElementById('btn');
 const horoMonth = $('#horoscopeMonth');
@@ -45,9 +45,8 @@ saveButton.addEventListener('click', function() {
   addLSText(date, desc);
   $('#saveBtn #btn').prop("disabled", true);
   $('#saveBtn #btn').css("background-color", "rgb(120 113 108)")
-
 }) 
-//onload~ load Local storage
+
 
 
 //fetch request for Byabee - wiki births
@@ -62,33 +61,28 @@ function getByabbe() {
 
     fetch(byabbeURI + month + '/' + day + '/births.json')
         .then(response => response.json())
-        .then(wikiData => { //make a function to store the wiki data
-            console.log(wikiData) //show what's in the JSON object 
-            popWiki(wikiData) //call next function and pass wikiData into it
+        .then(wikiData => { //made a function to store the wiki data
+            popWiki(wikiData) //calls next function and passes wikiData into it
         })
 }
 
-// I would not use removeContent here, as running this function clears the horoData.
-// The removeContent function can be deleted, as the Wiki info is replaced everytime anyways.
-function popWiki(wikiData) { //make function to render the wiki data elements
-    // removeContent();
-    let apString = ""; //apString holds the HTML that we'll replace in the loop
+
+function popWiki(wikiData) { //made function to render the wiki data elements
+    let aLiString = ""; //aLiString holds the HTML that we'll replace in the loop
     var wikiUL = document.getElementById('bdayList'); //into this element we'll insert new <a> and <p> tags
-    for (let i = 0; i < 5; i++) { //loop through first five people, maybe later make random?
+    for (let i = 0; i < 5; i++) { //loop through random five people
         var e = Math.floor((Math.random() * wikiData.births.length))
         var birthsYear = wikiData.births[e].year;
         var birthsDesc = wikiData.births[e].description;
         var birthsLink = wikiData.births[e].wikipedia[0].wikipedia;
-        //wikiData.births.delete(e)
-        apString += '<a class="list-disc hover:text-slate-200"  target=_blank  href="' + birthsLink + '">\
+        aLiString += '<a class="list-disc hover:text-slate-200"  target=_blank  href="' + birthsLink + '">\
                             <li class="list-disc">'+ birthsYear + ' - ' + birthsDesc + '</li>\
                             </a>'
     }
-    wikiUL.innerHTML = apString;
+    wikiUL.innerHTML = aLiString;
 }
 
 //next function to calculate Zodiac sign from input month and day
-//attempting method described here: https://medium.com/@Saf_Bes/get-the-zodiac-sign-for-a-date-in-javascript-797305d75869
 
 function dateToZodiac(day, month) {
     let bDateText = $("#calendarSelector").val();
@@ -96,8 +90,7 @@ function dateToZodiac(day, month) {
     var month = bDateMoment.month() + 1; //moment month is 0 base, so add 1
     var day = bDateMoment.date();
 
-    // checks month and date within the
-    // valid range of a specified zodiac
+    // checks month and date within the valid range of a specified zodiac
     if (month == 12) {
 
         if (day < 22)
@@ -181,11 +174,8 @@ function dateToZodiac(day, month) {
         else
             zodiacSign = "Sagittarius";
     }
-
-    //console.log(zodiacSign);
     getAztro(zodiacSign);
 }
-
 
 
 //fetch request for Aztro - Horoscope
@@ -208,8 +198,7 @@ function getAztro() {
 }
 
 
-// added horoInfo.data to store these variables in the data fields I added to
-// "horoscopeInfo" in the HTML.
+// added horoInfo.data to store these variables in the data fields I added to "horoscopeInfo" in the HTML.
 function popData(horoData) {
     removeContent();
     const horoDesc = horoData.description;
@@ -229,15 +218,10 @@ function removeContent() {
     horoMonth.empty();
     horoInfo.empty();
 }
-//local storage, I changed this so that it uses the date and description, sets
-// them to an object, pushes the object into the storageLocal array above, then
-// stringifies the array into localStorage, then appends the date + description
-// inside the savedText box.
+//local storage, using date and description sets them to an object, pushes the object into the storageLocal array above, then
+// stringifies the array into localStorage, then appends the date + description inside the savedText box.
 
-// Instead of the birthday being saved, I was thinking that the date you requested
-// the horoscope is saved. Your birthday won't change, but your horoscope tomorrow will
-// so now, it appends today's date and today's description, so you can see which
-// description you got on which day.
+
 function addLSText(date, description){
     let storageObject = {
       date: date,
